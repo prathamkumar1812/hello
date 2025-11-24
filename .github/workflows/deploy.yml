@@ -15,10 +15,7 @@ jobs:
 
       - name: Create ZIP package 
         run: |
-          mkdir packaged
-          cp index.html packaged/
-          # add other files (CSS, JS, images) if needed
-          cd packaged
+          cd site
           zip -r ../site.zip .
 
       - name: Deploy to Azure Web App
