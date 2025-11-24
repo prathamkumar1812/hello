@@ -14,7 +14,12 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Create ZIP package 
-        run: zip -r site.zip .
+        run: |
+          mkdir packaged
+          cp index.html packaged/
+          # add other files (CSS, JS, images) if needed
+          cd packaged
+          zip -r ../site.zip .
 
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v3
