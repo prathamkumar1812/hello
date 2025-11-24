@@ -13,8 +13,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Create ZIP package
-        run: zip -r site.zip index.html
+      - name: Create ZIP package (Linux Web App compatible)
+        run: |
+          mkdir -p wwwroot
+          cp index.html wwwroot/
+          zip -r site.zip wwwroot
 
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v3
